@@ -1,0 +1,728 @@
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
+    <div class="container-fluid ">
+        <a class="navbar-brand">
+            <i class="fa-solid fa-house" (click)="home()" style="cursor: pointer;"></i>&#160;
+            <span style="font-size:14px; font-weight: 500; ">InFlyHealth</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+            <div class="form-outline text-light" tabindex="-1">
+                <input class="main" type="search" placeholder="&#160;&#160;&#160;Search Airlines & Tails"
+                    aria-label="Search" />
+                &#160;&#160;&#160;{{currentDate}}&#160;&#160;&#160;&#160;{{currentTime}}
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <i class="fa-solid fa-arrow-right-from-bracket fa-2x logout justify-content-end" (click)="logout()"></i>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<br><br>
+<div class="container-fluid h-50 d-flex flex-column">
+    <div class="row h-45">
+        <div class="col-sm-12 text-center bg-dark py-4 text-light">
+            <h1 class="text-light">
+                <i class="fa-solid fa-plane-up fa-2xs bg-info circle py-3" style="height: 30px; width: 30px;"></i>
+                {{tailId}} &#160; <i class="fa-solid fa-angle-down "></i>
+            </h1>
+            <div class="container">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example"
+                    (click)="onButtonGroupClick($event)">
+                    <button type="button" class="btn btn-outline-info active" (click)="overview()"
+                        style="width:110px;box-shadow:none;">Overview</button>
+                    <button type="button" class="btn btn-outline-info" style="box-shadow: none;"
+                        (click)="livemoniter()">Live Monitering</button>
+                    <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+                        style="border-radius:0px;" (click)="timeline()"
+                        style="width:110px;box-shadow: none;">Timeline</button>
+                    <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+                        style="width: 110px; box-shadow: none;" (click)="flights()">Flights</button>
+                    <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+                        style="border-radius:0 5px 5px 0 ;width:110px; box-shadow: none;"
+                        (click)="events()">Events</button>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle d-md-none"
+                            data-bs-toggle="dropdown" aria-expanded="false">More</button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <li> <a class="dropdown-item" (click)="timeline()">Timeline</a></li>
+                            <li><a class=" dropdown-item" (click)="flights()">Flights</a></li>
+                            <li><a class="dropdown-item" (click)="events()">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tails === 'livemoniter';" class="px-5" style="color:#5dbfd4; cursor: pointer;"
+        (click)="backtomoniter()"> <br><br><br> <i class="fa-solid fa-arrow-left-long"></i> &nbsp;Back to Live
+        Monitering</div>
+    <div class="row px-5">
+        <div *ngIf="tails === 'livemoniter'; else elsepart" class="row py-5">
+            <div class="col-sm-6">
+                <i class="fa-solid fa-arrows-rotate"></i> Updated at 11:35 IST
+            </div>
+            <div class="col-sm-6 text-end" style="color: #000000;">
+                Last message received Monday June 13 at 13:55 (UTC)
+            </div>
+        </div>
+        <div *ngIf="tails === 'overview'">
+            <div class="text-dark" style="font-weight: bold;"><br><br>
+                KEY METRICS<br><br>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <h4 class="card-header head">
+                        <div class="row">
+                            <div class="col-6 text-start">
+                                BITE Coverage
+                            </div><br>
+                        </div>
+                    </h4>
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col-sm-5 cards py-3">
+                                    0.0
+                                </div>
+                                <div class="col-sm-2">
+
+                                </div>
+                                <div class="col-sm-5 id justify-content-end">
+                                    &nbsp;
+                                </div>
+
+                            </div>
+                            <div class="container cont row">
+                                <div class="col">
+                                    <div class="row fonts">
+                                        FLIGHTS
+                                    </div><br>
+                                    <div class="row value">
+                                        17
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row fonts">
+                                        MATCHING
+                                    </div><br>
+                                    <div class="row value">
+                                        0
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row fonts">
+                                        MISSING
+                                    </div><br>
+                                    <div class="row value">
+                                        17
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="text-dark" style="font-weight: bold;"><br><br>
+                STATUSES<br><br>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="card text-center" style="width: 18rem; border: 0;font-size: 15px;">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-power-off fa-2x circle2 py-3"></i>
+                        </div>
+                        SYSTEM RESET
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="card text-center" style="width: 18rem; border: 0;font-size: 15px;">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-rectangle-list fa-2x circle2 py-3"></i>
+                        </div>
+                        HEAD-END
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="card text-center" style="width: 18rem; border: 0;font-size: 15px;">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-user fa-2x circle2 py-3"></i>
+                        </div>
+                        FIRST CLASS
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="card text-center" style="width: 18rem; border: 0;font-size: 15px;">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-user fa-2x circle2 py-3"></i>
+                        </div>
+                        BUSINESS CLASS
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="card text-center" style="width: 18rem; border: 0; font-size: 15px;">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-user fa-2x circle2 py-3"></i>
+                        </div>
+                        ECONOMY CLASS
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tails === 'livemoniter'">
+            <div class="row">
+                <div class="col-sm-6 text-dark" style="font-weight: bold;">
+                    IFE STATUSES
+                    <hr>
+                    <br>
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color:  #f1f2f3;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <i class="fa-solid fa-rectangle-list fa-2x bag px-3 py-3"></i>
+                                    </div>
+                                    <div class="col-sm-8 px-2 py-2" style="padding: 0;">
+                                        <div class="row">
+                                            <div class="col" style="font-weight:bold;">
+                                                Head-End
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col" style="font-size: 12px; font-weight:400 ;">
+                                                No issue
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 text-dark" style="font-weight: bold;">
+                    FLIGHT INFORMATION
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    FLIGHT#
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    THS1007
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    ORIGIN
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    MLB
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    DESTINATION
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    ATL
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    ALTITUDE
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    33 feet
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    TIME TO DESTINATION
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    00h 00m 00s
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    DEPARTURE TIME (UTC)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    11/08/2021 05:35
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col" style="font-size: 12px; font-weight: 400;">
+                                    SCHEDULED ARRIVAL TIME (UTC)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col py-2" style="font-size: 14px; font-weight: 500; color: #5dbfd4;">
+                                    11/08/2021 09:18
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-dark" style="font-weight: bold;">
+                    STREAMING SESSIONS
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card" style="background-color:  #f1f2f3;">
+                                <div class="card-head py-1 px-3" style="font-weight: 400;">
+                                    DSU1
+                                </div>
+                                <div class="card-body" style="font-weight: 400;">
+                                    <i class="fa-solid fa-circle fa-s" style="color: rgb(58, 243, 41);"></i>&#160; <span
+                                        style="font-weight: bold;">2</span>/124
+                                </div>
+                            </div>
+                        </div> &#160;
+                        <div class="col-sm-3">
+                            <div class="card" style="background-color:  #f1f2f3;">
+                                <div class="card-head py-1 px-3" style="font-weight: 400;">
+                                    DSU2
+                                </div>
+                                <div class="card-body" style="font-weight: 400;">
+                                    <i class="fa-solid fa-circle fa-s" style="color: rgb(243, 139, 41);"></i>&#160;
+                                    <span style="font-weight: bold;">0</span>/125
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <br><br><br>
+                    <div class="row px-3">Beams Display:&#160;&#160;
+                        <div class="col-sm-3 form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                None
+                            </label>
+                        </div>
+                        <div class="col-sm-6 form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                SES
+                            </label>
+                        </div>
+                    </div>
+                    <agm-map [latitude]='lat' [longitude]='long' [zoom]='zoom'>
+                        <agm-overlay [latitude]="dummyItems.lat" [longitude]="dummyItems.lng">
+                            <div><i class="plane fa-solid fa-plane fa-3x"></i></div>
+                        </agm-overlay>
+
+                        <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng">
+                        </agm-marker>
+
+                        <agm-polyline [editable]="false">
+                            <agm-polyline-point *ngFor="let marker of markers" [latitude]="marker.lat"
+                                [longitude]="marker.lng">
+                            </agm-polyline-point>
+                        </agm-polyline>
+                    </agm-map>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tails === 'events'">
+            <div class="row">
+                <!-- <div class="col-sm-9"> -->
+                Display:&#160;&#160;&#160;&#160;
+                <button type="button" class="col-sm-1 btn btn-outline-info active"
+                    style="height: 35px;">Resets</button>&#160;&#160;&#160;
+                <button type="button" class="col-sm-1 btn btn-outline-info"
+                    style="height: 35px;">Faults</button>&#160;&#160;&#160;
+                <button type="button" class="col-sm-1 btn btn-outline-info"
+                    style="height: 35px;">Failures</button>&#160;&#160;&#160;
+                <button type="button" class="col-sm-2 btn btn-outline-info" style="height: 35px;">App.
+                    Events</button>&#160;&#160;&#160;
+                <button type="button" class="col-sm-2 btn btn-outline-info" style="height: 35px;">Impacted
+                    Services</button>&#160;&#160;&#160;
+                <!-- </div>&#160;&#160;&#160;&#160;&#160;&#160;&#160; -->
+            </div><br><br><br><br><br>
+            <div class="container text-center">
+                Configuration not found for this tail.
+            </div><br><br>
+            <div class="container text-center">
+                No Records Found...
+            </div><br><br><br><br>
+        </div>
+        <div *ngIf="tails === 'flights'">
+            <div class="text-dark">
+                FLIGHT TYPE<br><br>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <select class="form-control" style="box-shadow: none; color: #5dbfd4;">
+                        <option selected>(All)</option>
+                        <option value="1">Domestic</option>
+                        <option value="2">International</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-outline-info active">Apply</button>
+                </div>
+            </div>
+            <div class="container-fluid"><br>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="text-dark text-center" style="font-size:10px ;font-weight: 500;">
+                                <th> FLIGHT#</th>
+                                <th>ORIGIN</th>
+                                <th>DESTINATION</th>
+                                <th>FLIGHT<br>TYPE</th>
+                                <th>DEPARTURE<br>TIME(UTC)</th>
+                                <th>ARRIVAL<br>TIME(UTC)&#160;<i class="fa-solid fa-arrow-down-long"></i></th>
+                                <th>DARK<br>FLIGHT</th>
+                                <th>BAD<br>FLIGHT</th>
+                                <th>DURATION<br>>10K</th>
+                                <th>SATCOM<br>AVAILABILITY<br>%</th>
+                                <th>PAX SERVICE<br>AVAILABILITY<br>%</th>
+                                <th>AVERAGE<br>SNR<br>(DBS)</th>
+                                <th>MAX<br>MOBILES/<br>PED<br>REGISTERED</th>
+                                <th>MAX<br>ACTIVE<br>USERS</th>
+                                <th>MAX SSID<br> CONNECTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR549</td>
+                                <td> ATQ</td>
+                                <td>DOH</td>
+                                <td>International</td>
+                                <td>06/14/2022<br>22:14</td>
+                                <td>06/15/2022<br>01:29</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR548</td>
+                                <td> DOH</td>
+                                <td>ATQ</td>
+                                <td>International</td>
+                                <td>06/14/2022<br>17:24</td>
+                                <td>06/14/2022<br>20:45</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR242</td>
+                                <td> SAW</td>
+                                <td>DOH</td>
+                                <td>International</td>
+                                <td>06/14/2022<br>11:57</td>
+                                <td>06/15/2022<br>15:31</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR241</td>
+                                <td> DOH</td>
+                                <td>SAW</td>
+                                <td>International</td>
+                                <td>06/14/2022<br>06:18</td>
+                                <td>06/15/2022<br>10:11</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR631</td>
+                                <td> SKT</td>
+                                <td>DOH</td>
+                                <td>International</td>
+                                <td>06/13/2022<br>23:04</td>
+                                <td>06/14/2022<br>02:26</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR266</td>
+                                <td> LCA</td>
+                                <td>DOH</td>
+                                <td>International</td>
+                                <td>06/13/2022<br>10:20</td>
+                                <td>06/13/2022<br>13:26</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td style="color: #5dbfd4;">QTR265</td>
+                                <td> DOH</td>
+                                <td>LCA</td>
+                                <td>International</td>
+                                <td>06/13/2022<br>05:29</td>
+                                <td>06/13/2022<br>08:54</td>
+                                <td><button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td> <button type="button" class="btn btn-light"
+                                        style="background-color:#a1a1a1; width: 60px; height: 30px; border-radius:5px; box-shadow:none;">N/A</button>
+                                </td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tails === 'timeline'">
+            <div class="row">
+                <div class="col-sm-12 text-dark" style="font-weight: bold;">
+                    TIMELINE
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="font-weight: 400; width:200px"></th>
+                                        <th scope="col" style="font-weight: 400; width:200px">June 2022 <br> Thu 9</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Fri 10</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Sat 11</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Sun 12</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Mon 13</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Tue 14</th>
+                                        <th scope="col" style="font-weight: 400; width:200px">Wed 15</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Flights</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">BITE Offloads</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Open Flight Legs</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Closed Flight Legs</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Flight Phases</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">System Power</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td style="font-weight: 400;">June 2022 <br> Thu 9</td>
+                                        <td style="font-weight: 400;">Fri 10</td>
+                                        <td style="font-weight: 400;">Sat 11</td>
+                                        <td style="font-weight: 400;">Sun 12</td>
+                                        <td style="font-weight: 400;">Mon 13</td>
+                                        <td style="font-weight: 400;">Tue 14</td>
+                                        <td style="font-weight: 400;">Wed 15</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer-basic">
+        <hr>
+        <footer>
+            <div class="social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                        class="fa-brands fa-snapchat"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a
+                    href="#"><i class="fa-brands fa-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">L&T Technology Services © 2022</p>
+        </footer>
+    </div>
+
+
+    <ng-template #elsepart>
+        <div class="row py-5">
+            <div class="col-sm-6">
+                <i class="fa-solid fa-arrows-rotate"></i> Updated at 11:35 IST
+            </div>
+            <div class="col-sm-6 text-end" style="color: #5dbfd4;">
+                <i class="fa-solid fa-calendar-days"></i> June 11-June 16 (UTC)
+            </div>
+        </div>
+    </ng-template>

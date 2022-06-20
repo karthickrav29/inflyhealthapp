@@ -1,0 +1,83 @@
+<!-- Register Page -->
+<div class="container-xl px-4 mt-4">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card-header text-center h4"><i class="fa-regular fa-user"></i>&#160;Register</div>
+                <div class="card-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Username * </label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
+                                formControlName="username">
+                        </div>
+                        <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty ||
+                         registerForm.controls['username'].touched)" class="alert alert-danger">
+                         <div *ngIf="registerForm.controls['username'].errors?.['required']">Username is required.</div>
+                         <div *ngIf="registerForm.controls['username'].errors?.['pattern']">Special characters not allowed.</div>
+                         <div *ngIf="registerForm.controls['username'].errors?.['minlength']">Username should be min 5 characters.</div>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text"
+                                    placeholder="Enter your first name" formControlName="firstname">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text"
+                                    placeholder="Enter your last name" formControlName="lastname">
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address *</label>
+                            <input class="form-control" id="inputEmailAddress" type="email"
+                                placeholder="Enter your email address" formControlName="email">
+                        </div>
+                        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty ||
+                         registerForm.controls['email'].touched)" class="alert alert-danger">
+                            <div *ngIf="registerForm.controls['email'].errors">
+                            Email is required.
+                          </div>
+                        </div>
+
+
+                        <div class="row gx-3 mb-3">
+
+                            <div class="col-md-6">
+                                <label class="small mb-1">Password *</label>
+                                <input class="form-control" type="password" placeholder="Enter your password"
+                                    formControlName="password">
+                            </div>
+                            <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty ||
+                             registerForm.controls['password'].touched)" class="alert alert-danger">
+                                <div *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</div>
+                              <div *ngIf="registerForm.controls['password'].errors?.['minlength']">Password should be min 5 characters.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="small mb-1">Re-type Password *</label>
+                                <input class="form-control" type="password" placeholder="Enter your password"
+                                    formControlName="confirmpassword">
+                            </div>
+                            <div *ngIf="registerForm.controls['confirmpassword'].invalid && (registerForm.controls['confirmpassword'].dirty || 
+                            registerForm.controls['confirmpassword'].touched)" class="alert alert-danger">
+                                <div *ngIf="registerForm.controls['confirmpassword'].errors?.['matching']">Password Mismatch.</div>
+                               
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" (click)="register()"
+                            [disabled]="registerForm.invalid"><i class="fa-regular fa-user"></i>&#160;Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

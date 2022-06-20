@@ -1,0 +1,437 @@
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
+  <div class="container-fluid ">
+    <a class="navbar-brand">
+      <i class="fa-solid fa-house"(click)="home()" style="cursor: pointer;"></i>&#160;
+      <span style="font-size:14px; font-weight: 500; ">InFlyHealth</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+      <div class="form-outline text-light" tabindex="-1">
+        <input class="main" type="search" placeholder="&#160;&#160;&#160;Search Airlines & Tails" aria-label="Search" />
+        &#160;&#160;&#160;{{currentDate}}&#160;&#160;&#160;&#160;{{currentTime}}
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+        <i class="fa-solid fa-arrow-right-from-bracket fa-2x logout justify-content-end" (click)="logout()"></i>
+      </div>
+
+    </div>
+  </div>
+</nav>
+<div class="container-fluid h-50 d-flex flex-column">
+  <div class="row h-45">
+    <div class="col-sm-12 text-center bg-dark py-3 text-light">
+      <h1 class="text-light">
+        <img class="circle" src="{{titlelogo}}" style="height: 40px; width:40px;">
+        &#160;{{titlename}}&#160; <i class="fa-solid fa-angle-down "></i>
+      </h1>
+      <div class="container">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example"
+          (click)="onButtonGroupClick($event)">
+          <button type="button" class="btn btn-outline-info active" (click)="overview()"
+            style="width:110px; box-shadow: none;">Overview</button>
+          <button type="button" class="btn btn-outline-info" style="box-shadow: none;" (click)="dashboard()">Dashboards</button>
+          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+            style="border-radius:0px" (click)="tail()" style="width:110px;box-shadow: none;">Tails</button>
+          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block" style="box-shadow: none;"
+            (click)="recommendation()">Recommendations</button>
+          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+            style="border-radius:0 5px 5px 0; box-shadow: none;" (click)="software()">Software
+            Configurations</button>
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle d-md-none"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <li> <a class="dropdown-item" (click)="tail()">Tails</a></li>
+              <li><a class=" dropdown-item">Recommendations</a></li>
+              <li><a class="dropdown-item">Software Configurations</a></li>
+              <li><a class="dropdown-item">More</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="overviews === 'overview'" class="row px-5">
+
+    <div class="row py-5">
+      <div class="col-sm-6">
+        <i class="fa-solid fa-arrows-rotate"></i> Updated at 11:35 IST
+      </div>
+      <div class="col-sm-6 text-end" style="color: #5dbfd4;">
+        <i class="fa-solid fa-calendar-days"></i> June 11-June 16 (UTC)
+      </div>
+    </div>
+
+    <div class="text-dark" style="font-weight: bold;"><br><br><br>
+      KEY METRICS<br><br>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <h4 class="card-header head">
+          <div class="row">
+            <div class="col-6 text-start">
+              BITE Coverage
+            </div><br>
+            <div class="col-6 text-end">
+              Details >
+            </div>
+          </div>
+        </h4>
+        <div class="card-body">
+          <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+          <div class="card-text">
+            <div class="row">
+              <div class="col-sm-5 cards py-3">
+                0.0
+              </div>
+              <!-- <div class="col-sm-2">
+
+              </div> -->
+              <div class="col-sm-5 id justify-content-end">
+                &nbsp;
+              </div>
+
+            </div>
+            <div class="container cont row">
+              <div class="col">
+                <div class="row fonts">
+                  FLIGHTS
+                </div><br>
+                <div class="row value">
+                  136
+                </div>
+              </div>
+              <div class="col">
+                <div class="row fonts">
+                  MATCHING
+                </div><br>
+                <div class="row value">
+                  0
+                </div>
+              </div>
+              <div class="col">
+                <div class="row fonts">
+                  MISSING
+                </div><br>
+                <div class="row value">
+                  136
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    &#160;&#160;&#160;&#160;
+    <div class="col-sm-3">
+      <div class="card">
+        <h4 class="card-header head">
+          <div class="row">
+            <div class="col-9">
+              CONNECTIVITY Coverage
+            </div><br>
+            <div class="col-3 conts">
+              Details >
+            </div>
+          </div>
+        </h4>
+        <div class="card-body">
+          <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+          <div class="card-text">
+            <div class="row">
+              <div class="col-sm-5 cards py-3">
+                0.0
+              </div>
+              <!-- <div class="col-sm-2">
+
+              </div> -->
+              <div class="col-sm-5 id justify-content-end">
+                &nbsp;
+              </div>
+
+            </div>
+            <div class="container row">
+              <div class="col ">
+                <div class="row fonts">
+                  FLIGHTS
+                </div><br>
+                <div class="row value">
+                  67
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="row fonts">
+                  MATCHING
+                </div><br>
+                <div class="row value">
+                  0
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="row fonts">
+                  MISSING
+                </div><br>
+                <div class="row value">
+                  67
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="overviews === 'tail'" class="row px-5">
+    <div class="row py-5">
+      <div class="col-sm-6">
+        <i class="fa-solid fa-arrows-rotate"></i> Updated at 11:35 IST
+      </div>
+      <div class="col-sm-6 text-end" style="color: #5dbfd4;">
+        <i class="fa-solid fa-calendar-days"></i> June 11-June 16 (UTC)
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color: #5dbfd4; color: azure;">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: 800;">ALL STATUSES</h5>
+          <p class="card-text py-1" style="font-size: 25px; font-weight: 800;">21</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color:  #f1f2f3;">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: 800; color: #5dbfd4;">GOOD STATUSES</h5>
+          <div class="card-text py-1">
+            <div class="row">
+              <div class="col-sm-6" style="font-size: 25px; font-weight: 800;">
+                0
+              </div>
+              <div class="col-sm-6 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160; 0.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color: #f1f2f3;">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: 800;color: #5dbfd4;">BAD STATUSES</h5>
+          <div class="card-text py-1">
+            <div class="row">
+              <div class="col-sm-6" style="font-size: 25px; font-weight: 800;">
+                0
+              </div>
+              <div class="col-sm-6 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: green;"></i>&#160;0.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color:  #f1f2f3;">
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: 800; color: #5dbfd4;">UNKNOWN STATUSES</h5>
+          <div class="card-text py-1">
+            <div class="row">
+              <div class="col-sm-5" style="font-size: 25px; font-weight: 800;">
+                21
+              </div>
+              <div class="col-sm-7 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160;100.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container-fluid"><br><br><br>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr class="text-dark text-center" style="font-size:10px ;font-weight: 500;">
+              <th>STATUS&#160;<i class="fa-solid fa-arrow-down-long"></i></th>
+              <th>FLEET</th>
+              <th>TAIL</th>
+              <th>A/C CONFIG</th>
+              <th>IFE<br>PLATFORM</th>
+              <th>CONNECTIVITY<br>PLATFORM</th>
+              <th>S/W<br>VERSION</th>
+              <th>MARKER</th>
+              <th>MEL</th>
+              <th>SYSTEM<br>RESET</th>
+              <th> HEAD-<br>END</th>
+              <th>FIRST<br>CLASS</th>
+              <th>BUSINESS<br>CLASS</th>
+              <th>ECONOMY<br>CLASS</th>
+              <th>UPPER<br>CLASS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle text-center" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td> --</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-AMJ')">A7-AMJ</td>
+              <td>A350-900<br>INNOV</td>
+              <td>AVANT</td>
+              <td> KA-GX</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#ffd23d;"></i>&#160;111 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#a1a1a1; width: 60px; height: 30px;">NO</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;;"></i></td>
+            </tr>
+
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td> --</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-AMH')">A7-AMH</td>
+              <td>A350-900<br>INNOV</td>
+              <td>AVANT</td>
+              <td> KA-GX</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#9bff3d;"></i>&#160;v2520 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#f76363; width: 60px; height: 30px;">YES</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;;"></i></td>
+            </tr>
+
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td> --</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-AHC')">A7-AHC</td>
+              <td>A320</td>
+              <td>AVANT</td>
+              <td> SES</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#a1a1a1;"></i>&#160;v2200 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#a1a1a1; width: 60px; height: 30px;">NO</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;"></i></td>
+            </tr>
+
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td style="color:#5dbfd4; ;"> 163</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-AME')">A7-AME</td>
+              <td>A350-900<br>INNOV</td>
+              <td>AVANT</td>
+              <td> KA-GX</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#ffd23d;"></i>&#160;v2510 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#a1a1a1; width: 60px; height: 30px;">NO</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;;"></i></td>
+            </tr>
+
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td> --</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-ANE')">A7-ANE</td>
+              <td>A350-1000<br>INNOV</td>
+              <td>AVANT</td>
+              <td> KA-GX</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#ffd23d;"></i>&#160;v2520 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#a1a1a1; width: 60px; height: 30px;">NO</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;;"></i></td>
+            </tr>
+
+            <tr class="text-center">
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;padding-top: 12px;"></i></td>
+              <td> --</td>
+              <td style="color: #5dbfd4; cursor: pointer;" (click)="tailopen('A7-ALQ')">A7-ALQ</td>
+              <td>A350-900 NEW<br>IFEC</td>
+              <td>--</td>
+              <td> SES</td>
+              <td><i class="fa-solid fa-circle fa-2xs" style="color:#a1a1a1;"></i>&#160;v1901 </td>
+              <td> <i class="fa-light fa-stop" style="border-color: black;"></i>&#160;No Status</td>
+              <td><button type="button" class="btn btn-light"
+                  style="background-color:#a1a1a1; width: 60px; height: 30px;">NO</button></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td><i class="fa-solid fa-circle" style="color:#a1a1a1;"></i></td>
+              <td>--</td>
+              <td><i class="fa-regular fa-pen-to-square" style="color: #5dbfd4;;"></i></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Footer -->
+
+  <div class="footer-basic">
+    <hr>
+    <footer>
+      <div class="social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+            class="fa-brands fa-snapchat"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i
+            class="fa-brands fa-facebook"></i></a></div>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Home</a></li>
+        <li class="list-inline-item"><a href="#">Services</a></li>
+        <li class="list-inline-item"><a href="#">About</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+      </ul>
+      <p class="copyright">L&T Technology Services © 2022</p>
+    </footer>
+  </div>

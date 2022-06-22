@@ -7,7 +7,7 @@ import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { ExampleService } from './example.service';
-import { FlightComponent } from './flight/flight.component';
+// import { FlightComponent } from './flight/flight.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
@@ -18,7 +18,7 @@ describe('AuthGuard', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppComponent,UserComponent,LoginComponent,FlightComponent, HomeComponent ],
+      declarations: [ AppComponent,UserComponent,LoginComponent, HomeComponent ],
       imports: [HttpClientTestingModule,
         RouterTestingModule.withRoutes(routes)],
       providers: [AuthGuard]

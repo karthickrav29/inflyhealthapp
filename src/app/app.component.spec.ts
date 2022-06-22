@@ -57,6 +57,7 @@ describe('AppComponent', () => {
 
   fit('should call ngoninit', () => {
     component.ngOnInit();
+    component.logout();
   });
 
 

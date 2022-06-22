@@ -15,8 +15,6 @@ import { ExampleService } from './example.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'application';
-  showHead:boolean = true;
   idleState: any;
   timedOut = false;
   userlogin: any;
@@ -31,25 +29,6 @@ export class AppComponent {
 
 
   ngOnInit() {
-    this.router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
-        if (event['url'] == '/user') {
-          this.showHead = false;
-        }
-        if (event['url'] == '/user/flight') {
-          this.showHead = false;
-        }
-        if (event['url'] == '/user/airlines') {
-          this.showHead = false;
-        }
-        if (event['url'] == '/user/airlines/tail') {
-          this.showHead = false;
-        }
-        else {
-          this.showHead = true;
-        }
-      }
-    });
     this.idle.setIdle(600);
     this.idle.setTimeout(10);
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);

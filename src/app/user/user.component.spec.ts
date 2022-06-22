@@ -38,8 +38,9 @@ describe('UserComponent', () => {
 
   fit('should create', () => {
     let userid = "1"
+    let image = "https://upload.wikimedia.org/wikipedia/commons/5/55/Aeroflot.svg"
     component.logout();
-    component.getID(userid);
+    component.getID(userid, image);
     component.flight();
    
     let spy = spyOn( service, 'getallData').and.returnValue(of());

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+// import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -56,13 +56,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { SlickCarouselModule } from 'ngx-slick-carousel'; 
 import { NgImageSliderModule } from 'ng-image-slider';
 import { DatePipe } from '@angular/common';
-import { FlightComponent } from './flight/flight.component';
+// import { FlightComponent } from './flight/flight.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorComponent } from './error/error.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmOverlays } from "agm-overlays";
 import { AirlinesComponent } from './airlines/airlines.component';
 import { TailComponent } from './tail/tail.component';
+import { AppFootComponent } from './app-foot/app-foot.component';
 
 @NgModule({
   declarations: [
@@ -72,10 +73,11 @@ import { TailComponent } from './tail/tail.component';
     RegisterComponent,
     UserComponent,
     HeaderComponent,
-    FlightComponent,
+    // FlightComponent,
     ErrorComponent,
     AirlinesComponent,
-    TailComponent
+    TailComponent,
+    AppFootComponent
   ],
   imports: [
     AppRoutingModule,

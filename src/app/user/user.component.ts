@@ -71,6 +71,7 @@ flight(){
 }
 
 getID(name:any,image:any){
+  console.log("image",image);
   localStorage.setItem("airname",name);
   localStorage.setItem("airimage",image);
 }

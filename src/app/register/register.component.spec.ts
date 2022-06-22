@@ -42,6 +42,7 @@ describe('RegisterComponent', () => {
 
   fit("for register component", (() => {
     component.redirect();
+    component.f;
     
     let user = {
       "username": "karthick",

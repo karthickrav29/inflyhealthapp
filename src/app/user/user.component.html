@@ -13,8 +13,7 @@
 
       <div class="form-outline text-light" tabindex="-1">
         <input class="main" type="search" placeholder="&#160;&#160;&#160;Search Airlines & Tails" aria-label="Search"
-         [(ngModel)]="searchQuery" (ngModelOptions)="{standalone:true}" (search)="search(searchQuery)"
-           />
+          [(ngModel)]="searchQuery" (ngModelOptions)="{standalone:true}" (search)="search(searchQuery)" />
         &#160;&#160;&#160;{{currentDate}}&#160;&#160;&#160;&#160;{{currentTime}}
         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
         <i class="fa-solid fa-arrow-right-from-bracket fa-2x logout" (click)="logout()"></i>
@@ -79,7 +78,7 @@
 <div class="container" *ngIf="buttonToggle; else nodata">
   <div class="row" *ngIf="getData ;else spinner">
     <div class="col-sm-3" *ngFor="let data of getData;">
-      <div class="card" [routerLink]="['airlines']" routerLinkActive="active" (click)="getID(data.name,data.image)">
+      <div class="card" [routerLink]="['/airlines']" routerLinkActive="active" (click)="getID(data.name,data.image)">
         <div class="card-body text-center">
           <div class="row ">
             <div class="col-sm-4">

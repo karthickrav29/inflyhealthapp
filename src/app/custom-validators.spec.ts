@@ -5,16 +5,16 @@ import { ExampleService } from './example.service';
 
 let router: Router;
 let component: CustomValidators;
-let service : ExampleService;
+let service: ExampleService;
 let fixture: ComponentFixture<CustomValidators>;
 
 describe('CustomValidators', () => {
-  let component:CustomValidators;
+  let component: CustomValidators;
   beforeEach(() => {
     fixture = TestBed.createComponent(CustomValidators);
     component = fixture.componentInstance;
   });
-  fit('should create an instance', () => {
+  it('should create an instance', () => {
     expect(new CustomValidators()).toBeTruthy();
     // expect(component.control)
     let pass = "123";

@@ -7,7 +7,7 @@ import { HomeComponent } from '../home/home.component';
 import { LoginComponent } from '../login/login.component';
 import { UserComponent } from '../user/user.component';
 import { Router } from "@angular/router";
-import { routes} from '../app-routing.module'
+import { routes } from '../app-routing.module'
 import { Location } from "@angular/common";
 
 import { RegisterComponent } from './register.component';
@@ -20,12 +20,12 @@ describe('RegisterComponent', () => {
   let location: Location;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
-      imports: [RouterTestingModule.withRoutes(routes),HttpClientTestingModule,
-     ],
-        providers: [ExampleService]
+      declarations: [RegisterComponent],
+      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule,
+      ],
+      providers: [ExampleService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -36,14 +36,14 @@ describe('RegisterComponent', () => {
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
     router.initialNavigation();
-    
+
 
   });
 
   fit("for register component", (() => {
     component.redirect();
     component.f;
-    
+
     let user = {
       "username": "karthick",
       "email": "karthick@ltts.com",
@@ -69,17 +69,17 @@ describe('RegisterComponent', () => {
       "confirmpassword": "123456",
       "id": 3
     }
-   
 
-    let spy = spyOn(service,'register').and.returnValues(of(user));
+
+    let spy = spyOn(service, 'register').and.returnValues(of(user));
     component.register();
     expect(component.selectfiles).toBeDefined();
     expect(component.selectfiles).toEqual(user);
-   
+
   })
 
 
-  fit('navigate to "" redirects you to /login', fakeAsync(() => { 
+  fit('navigate to "" redirects you to /login', fakeAsync(() => {
     component.register();
     setTimeout(() => {
       router.navigate(["/login"]).then(() => {
@@ -87,12 +87,8 @@ describe('RegisterComponent', () => {
       });
     }, 2000);
     tick(2000);
-  
-   
+
+
   }));
- 
+
 });
-
-
-
-

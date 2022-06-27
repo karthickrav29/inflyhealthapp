@@ -12,7 +12,7 @@ describe('ExampleService', () => {
       imports: [HttpClientTestingModule],
       providers: [ExampleService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
 
@@ -22,10 +22,10 @@ describe('ExampleService', () => {
   });
 
   fit('should be created', () => {
-    let username ="karthick";
+    let username = "karthick";
     let password = "123456";
     let query = "air";
-    let data =  [{
+    let data = [{
       "username": "karthick",
       "email": "karthick@ltts.com",
       "password": "123456",
@@ -37,7 +37,7 @@ describe('ExampleService', () => {
     const service: ExampleService = TestBed.get(ExampleService);
     service.getData();
     service.getallData();
-    service.login(username,password);
+    service.login(username, password);
     service.register(data);
     service.searchQuery(query);
 

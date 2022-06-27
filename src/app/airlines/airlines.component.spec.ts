@@ -4,37 +4,38 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ExampleService } from '../example.service';
-import { HomeComponent } from '../home/home.component';
-
+import { of } from 'rxjs';
 import { AirlinesComponent } from './airlines.component';
+import { UserComponent } from '../user/user.component';
 
 describe('AirlinesComponent', () => {
   let component: AirlinesComponent;
   let fixture: ComponentFixture<AirlinesComponent>;
+  let service: ExampleService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AirlinesComponent ],
-      imports: [HttpClientTestingModule,ModalModule.forRoot(),
+      declarations: [AirlinesComponent],
+      imports: [HttpClientTestingModule, ModalModule.forRoot(),
         RouterTestingModule.withRoutes(
-          [{path: 'home', component: HomeComponent}]
+          [{ path: 'user', component: UserComponent }]
         )],
       providers: [DatePipe,
         ExampleService]
     },
     )
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AirlinesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    service = TestBed.inject(ExampleService);
   });
 
   fit('should create', () => {
     let id = "ABC";
-    expect(component).toBeTruthy();
     component.logout();
     component.overview();
     component.dashboard();
@@ -43,9 +44,149 @@ describe('AirlinesComponent', () => {
     component.software();
     component.home();
     component.tailopen(id);
+    expect(component).toBeTruthy();
   });
 
   fit('should be call oninit', () => {
+    let spy = spyOn(service, 'getData').and.returnValue(of());
+    let subspy = spyOn(service.getData(), 'subscribe');
     component.ngOnInit();
+    expect(spy).toHaveBeenCalledBefore(subspy);
+    expect(subspy).toHaveBeenCalled();
+  })
+
+  fit('should be subscribe data', () => {
+
+    let value = [
+      {
+        "id": 1,
+        "name": "Aero Flot",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Aeroflot.svg",
+        "code": "SU",
+        "flightdata": [
+          {
+            "id": 1,
+            "flightname": "A7AHL",
+            "flightid": "UAE38",
+            "arrival": "DFW",
+            "departure": "LAX",
+            "dept": {
+              "lat": "33.94277266812347",
+              "lng": "-118.41023588772588"
+            },
+            "arr": {
+              "lat": "33.272331806543605",
+              "lng": "-96.91604754566146"
+            },
+            "cur": {
+              "lat": "33.43532060723313",
+              "lng": "-112.01025274878162"
+            },
+            "messagetime": "60347",
+            "feet": "33",
+            "landinghrs": "05",
+            "operational": true,
+            "nonoperational": false,
+            "degret": false,
+            "unknown": true,
+            "status": "unknown"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Air Asia",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/AirAsia_New_Logo.svg",
+        "code": "AXM",
+        "flightdata": [
+          {
+            "id": 1,
+            "flightname": "D71",
+            "flightid": "XAX1",
+            "arrival": "KOL",
+            "departure": "KAN",
+            "messagetime": "2",
+            "feet": "3",
+            "landinghrs": "00",
+            "operational": false,
+            "nonoperational": false,
+            "degret": false,
+            "unknown": false,
+            "status": "degret",
+            "dept": {
+              "lat": "12.045418754070331",
+              "lng": "8.522128940951788"
+            },
+            "arr": {
+              "lat": "22.653687913106207",
+              "lng": "88.44495422651309"
+            },
+            "cur": {
+              "lat": "15.71038944592135",
+              "lng": "44.14585944839717"
+            }
+          },
+          {
+            "id": 2,
+            "flightname": "AS1",
+            "flightid": "ASA1",
+            "arrival": "WDC",
+            "departure": "SAT",
+            "messagetime": "234",
+            "feet": "21",
+            "landinghrs": "12",
+            "operational": true,
+            "nonoperational": true,
+            "degret": true,
+            "unknown": true,
+            "status": "operational",
+            "dept": {
+              "lat": "29.53126262722841",
+              "lng": "-98.46835913170116"
+            },
+            "arr": {
+              "lat": "38.84823387383739",
+              "lng": "-77.17134396501721"
+            },
+            "cur": {
+              "lat": "34.764757111321714",
+              "lng": "-86.62375118261006"
+            }
+          }
+        ]
+      }
+    ];
+
+    let spy = spyOn(service, 'getData').and.returnValue(of(value));
+    component.ngOnInit();
+    expect(component.getData).toBeDefined();
+    expect(component.getData).toEqual(value);
+    expect(component.airname).toEqual(component.flightname.name);
+
+  })
+
+  fit('should click the button group', () => {
+    let event = [{
+
+      "isTrusted": true,
+      "delegateTarget": {
+        "location": {
+          "ancestorOrigins": {},
+          "href": "http://localhost:4200/airlines",
+          "origin": "http://localhost:4200",
+          "protocol": "http:",
+          "host": "localhost:4200",
+          "hostname": "localhost",
+          "port": "4200",
+          "pathname": "/airlines",
+          "search": "",
+          "hash": ""
+        },
+        "uidEvent": 1
+      }
+
+    }];
+
+    // component.onButtonGroupClick(event);
   })
 });

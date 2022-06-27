@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AirlinesComponent } from './airlines/airlines.component';
 import { AuthGuard } from './auth.guard';
 import { ErrorComponent } from './error/error.component';
-// import { FlightComponent } from './flight/flight.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -26,26 +25,21 @@ export const routes: Routes = [
   {
     path: 'user',
     component: UserComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
     component: HomeComponent
   },
-  // {
-  //   path: 'user/flight',
-  //   component: FlightComponent,
-  //   canActivate:[AuthGuard]
-  // },
   {
-    path:'user/airlines',
+    path: 'airlines',
     component: AirlinesComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
-    path: 'user/airlines/tail',
+    path: 'tail',
     component: TailComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

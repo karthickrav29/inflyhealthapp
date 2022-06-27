@@ -1,8 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
-import { NgToastComponent, NgToastService } from 'ng-angular-popup';
+import { NgToastService } from 'ng-angular-popup';
 import { of } from 'rxjs';
 import { ExampleService } from '../example.service';
 import { RegisterComponent } from '../register/register.component';
@@ -18,16 +17,16 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       imports: [HttpClientTestingModule,
         RouterTestingModule.withRoutes(
-          [{path: 'user', component: UserComponent},
-        {path: 'register', component: RegisterComponent}]
+          [{ path: 'user', component: UserComponent },
+          { path: 'register', component: RegisterComponent }]
         )],
-        providers: [ExampleService,
+      providers: [ExampleService,
         NgToastService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -46,14 +45,14 @@ describe('LoginComponent', () => {
     let password = "123456";
 
     let spy = spyOn(service, 'login').and.returnValue(of([]));
-    let subspy = spyOn(service.login(username,password),'subscribe');
+    let subspy = spyOn(service.login(username, password), 'subscribe');
     component.login();
     expect(spy).toHaveBeenCalledBefore(subspy);
     expect(subspy).toHaveBeenCalled();
-   
+
   });
 
-  fit( "should compare the values", () => {
+  fit("should compare the values", () => {
 
     let data = [{
       "username": "new",
@@ -65,25 +64,25 @@ describe('LoginComponent', () => {
     }]
 
     let value = 1;
-    let spy = spyOn(service,'login').and.returnValues(of(data));
+    spyOn(service, 'login').and.returnValues(of(data));
     component.login();
-    localStorage.setItem("username","karthick");
+    localStorage.setItem("username", "karthick");
+    localStorage.setItem("isUserLoggedIn", "true");
     expect(component.newData).toBeDefined();
     expect(component.newData.length).toEqual(value);
-    localStorage.setItem("isUserLoggedIn","true");
 
   });
 
-  fit("should be false for else condition",() => {
+  fit("should be false for else condition", () => {
     let data = {};
 
-    let newspy = spyOn(service,'login').and.returnValues(of(data));
+    spyOn(service, 'login').and.returnValues(of(data));
     component.login();
-    localStorage.setItem("username","karthick");
+    localStorage.setItem("username", "karthick");
     expect(component.newData).toBeDefined();
     expect(component.newData.length).toEqual(undefined);
-    
+
   })
 
- 
+
 });

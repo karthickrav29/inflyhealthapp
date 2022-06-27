@@ -18,12 +18,12 @@ describe('AuthGuard', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppComponent,UserComponent,LoginComponent, HomeComponent ],
+      declarations: [AppComponent, UserComponent, LoginComponent, HomeComponent],
       imports: [HttpClientTestingModule,
         RouterTestingModule.withRoutes(routes)],
       providers: [AuthGuard]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -33,18 +33,12 @@ describe('AuthGuard', () => {
   });
 
   fit('should be created', () => {
-    const result = guard.canActivate(new ActivatedRouteSnapshot(), <RouterStateSnapshot>{url: 'testUrl'});
+    const result = guard.canActivate(new ActivatedRouteSnapshot(), <RouterStateSnapshot>{ url: 'testUrl' });
     expect(result).toBeTruthy();
-    let url = 'login';
+    let url = '/login';
     guard.checkLogin(url);
-    expect(localStorage.getItem('isUserLoggedIn')).toEqual('false');
-    // expect(result).toEqual(true);
-    // expect(navigateSpy).toEqual(['/login']);
-    // let url = '/user';
-    // let res = guard.checkLogin(url);
-    // guard.checkLogin(url);
-    
-    // expect(guard.checkLogin(url)).toEqual(res);
-    // expect(guard).toBeTruthy();
+    console.log("guarddddddd", localStorage.getItem("isUserLoggedIn"));
+    expect(localStorage.getItem("isUserLoggedIn")).toEqual('false');
+    // expect(url).toEqual('/login');
   });
 });

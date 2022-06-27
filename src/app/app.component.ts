@@ -1,13 +1,10 @@
-import { Component, ViewChild, TemplateRef, ElementRef, AfterViewInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-import { ExampleService } from './example.service';
 
 @Component({
   selector: 'app-root',
@@ -60,9 +57,7 @@ export class AppComponent {
     else {
       this.idle.stop();
     }
-
   }
-
 
   hideChildModal() {
     this.childModal.hide();
@@ -78,7 +73,6 @@ export class AppComponent {
     localStorage.setItem("isUserLoggedIn", "false");
     this.router.navigate(['/home']);
   }
-
 
   reset() {
     this.idle.watch();

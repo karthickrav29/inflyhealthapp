@@ -8,9 +8,9 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ErrorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('ErrorComponent', () => {
     fixture.detectChanges();
   });
 
-  fit("for wildcard routing",fakeAsync(() => {
+  fit("for wildcard routing", fakeAsync(() => {
     component.ngOnInit();
   }))
 

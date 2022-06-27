@@ -20,11 +20,12 @@ export class AirlinesComponent implements OnInit {
   titlelogo: any;
   flightname: any;
   overviews: any = "dashboard";
+  clickedElement: any;
 
   constructor(private date: DatePipe,
     private router: Router,
     private ToastService: NgToastService,
-    private apiservice: ExampleService) { 
+    private apiservice: ExampleService) {
     setInterval(() => {
       this.currentDate = this.date.transform((new Date), 'MM/dd/yyyy');
       this.currentTime = this.date.transform((new Date), 'h:mm:ss');
@@ -37,16 +38,15 @@ export class AirlinesComponent implements OnInit {
       this.getData = data;
       this.airname = localStorage.getItem("airname");
       this.airimage = localStorage.getItem("airimage");
-      
-      for(this.flightname of this.getData){
-        if(this.flightname.name == this.airname){
+      for (this.flightname of this.getData) {
+        if (this.flightname.name == this.airname) {
           this.titlename = this.flightname.name
         }
-        if(this.flightname.image == this.airimage){
+        if (this.flightname.image == this.airimage) {
           this.titlelogo = this.flightname.image
         }
       }
-     
+
     })
   }
 
@@ -57,43 +57,44 @@ export class AirlinesComponent implements OnInit {
     localStorage.setItem("isUserLoggedIn", "false");
   }
 
-  onButtonGroupClick($event:any){
-    let clickedElement = $event.target || $event.srcElement;
-    if( clickedElement.nodeName === "BUTTON" ) {
-      let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
-      if( isCertainButtonAlreadyActive ) {
+  onButtonGroupClick($event: any) {
+    this.clickedElement = $event.target;
+    console.log("click", $event);
+    if (this.clickedElement.nodeName === "BUTTON") {
+      let isCertainButtonAlreadyActive = this.clickedElement.parentElement.querySelector(".active");
+      if (isCertainButtonAlreadyActive) {
         isCertainButtonAlreadyActive.classList.remove("active");
       }
-      clickedElement.className += " active";
+      this.clickedElement.className += " active";
     }
   }
 
-  overview(){
+  overview() {
     this.overviews = "overview";
   }
 
-  dashboard(){
+  dashboard() {
     this.overviews = "dashboard";
   }
 
-  tail(){
+  tail() {
     this.overviews = "tail";
   }
 
-  recommendation(){
+  recommendation() {
     this.overviews = "recommendation";
   }
 
-  software(){
+  software() {
     this.overviews = "software";
   }
 
-  tailopen(id:any){
-    localStorage.setItem("tailId",id);
-    this.router.navigate(['/user/airlines/tail']);
+  tailopen(id: any) {
+    localStorage.setItem("tailId", id);
+    this.router.navigate(['/tail']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/user']);
   }
 }

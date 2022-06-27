@@ -15,9 +15,12 @@
                         </div>
                         <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty ||
                          registerForm.controls['username'].touched)" class="alert alert-danger">
-                         <div *ngIf="registerForm.controls['username'].errors?.['required']">Username is required.</div>
-                         <div *ngIf="registerForm.controls['username'].errors?.['pattern']">Special characters not allowed.</div>
-                         <div *ngIf="registerForm.controls['username'].errors?.['minlength']">Username should be min 5 characters.</div>
+                            <div *ngIf="registerForm.controls['username'].errors?.['required']">Username is required.
+                            </div>
+                            <div *ngIf="registerForm.controls['username'].errors?.['pattern']">Special characters not
+                                allowed.</div>
+                            <div *ngIf="registerForm.controls['username'].errors?.['minlength']">Username should be min
+                                5 characters.</div>
                         </div>
 
                         <div class="row gx-3 mb-3">
@@ -44,8 +47,8 @@
                         <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty ||
                          registerForm.controls['email'].touched)" class="alert alert-danger">
                             <div *ngIf="registerForm.controls['email'].errors">
-                            Email is required.
-                          </div>
+                                Email is required.
+                            </div>
                         </div>
 
 
@@ -58,8 +61,10 @@
                             </div>
                             <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty ||
                              registerForm.controls['password'].touched)" class="alert alert-danger">
-                                <div *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</div>
-                              <div *ngIf="registerForm.controls['password'].errors?.['minlength']">Password should be min 5 characters.</div>
+                                <div *ngIf="registerForm.controls['password'].errors?.['required']">Password is
+                                    required.</div>
+                                <div *ngIf="registerForm.controls['password'].errors?.['minlength']">Password should be
+                                    min 5 characters.</div>
                             </div>
 
                             <div class="col-md-6">
@@ -69,8 +74,9 @@
                             </div>
                             <div *ngIf="registerForm.controls['confirmpassword'].invalid && (registerForm.controls['confirmpassword'].dirty || 
                             registerForm.controls['confirmpassword'].touched)" class="alert alert-danger">
-                                <div *ngIf="registerForm.controls['confirmpassword'].errors?.['matching']">Password Mismatch.</div>
-                               
+                                <div *ngIf="registerForm.controls['confirmpassword'].errors?.['matching']">Password
+                                    Mismatch.</div>
+
                             </div>
                         </div>
 

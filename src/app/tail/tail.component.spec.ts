@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ExampleService } from '../example.service';
@@ -14,15 +14,15 @@ describe('TailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TailComponent ],
-      imports: [HttpClientTestingModule,ModalModule.forRoot(),
+      declarations: [TailComponent],
+      imports: [HttpClientTestingModule, ModalModule.forRoot(),
         RouterTestingModule.withRoutes(
-          [{path: 'home', component: HomeComponent}]
+          [{ path: 'home', component: HomeComponent }]
         )],
       providers: [DatePipe,
         ExampleService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -42,4 +42,12 @@ describe('TailComponent', () => {
     component.backtomoniter();
     component.home();
   });
+
+  fit('should call ngoninit', fakeAsync(() => {
+    component.ngOnInit();
+    setInterval(() => {
+    }, 2000);
+    tick(2000);
+    discardPeriodicTasks();
+  }));
 });

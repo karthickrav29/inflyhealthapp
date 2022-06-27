@@ -10,7 +10,7 @@ export class ErrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    localStorage.setItem("isUserLoggedIn","false");
+    localStorage.setItem("isUserLoggedIn", "false");
   }
 
 }

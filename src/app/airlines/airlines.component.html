@@ -29,17 +29,19 @@
         &#160;{{titlename}}&#160; <i class="fa-solid fa-angle-down" style="color: white;"></i>
       </h1>
       <div class="container">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example"
-          (click)="onButtonGroupClick($event)">
-          <button type="button" class="btn btn-outline-info active" (click)="overview()"
-            style="width:110px; box-shadow: none;">Overview</button>
-          <button type="button" class="btn btn-outline-info" style="box-shadow: none;"
-            (click)="dashboard()">Dashboards</button>
-          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
-            style="border-radius:0px" (click)="tail()" style="width:110px;box-shadow: none;">Tails</button>
-          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
-            style="box-shadow: none;" (click)="recommendation()">Recommendations</button>
-          <button type="button" class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+          <button type="button" [class.active]="isActive('btn1')" (click)="setActive('btn1')"
+            class="btn btn-outline-info" (click)="overview()" style="width:110px; box-shadow: none;">Overview</button>
+          <button type="button" [class.active]="isActive('btn2')" (click)="setActive('btn2')"
+            class="btn btn-outline-info" style="box-shadow: none;" (click)="dashboard()">Dashboards</button>
+          <button type="button" [class.active]="isActive('btn3')" (click)="setActive('btn3')"
+            class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block" style="border-radius:0px"
+            (click)="tail()" style="width:110px;box-shadow: none;">Tails</button>
+          <button type="button" [class.active]="isActive('btn4')" (click)="setActive('btn4')"
+            class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block" style="box-shadow: none;"
+            (click)="recommendation()">Recommendations</button>
+          <button type="button" [class.active]="isActive('btn5')" (click)="setActive('btn5')"
+            class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
             style="border-radius:0 5px 5px 0; box-shadow: none;" (click)="software()">Software
             Configurations</button>
           <div class="btn-group" role="group">
@@ -51,8 +53,6 @@
               <li> <a class="dropdown-item" (click)="tail()">Tails</a></li>
               <li><a class=" dropdown-item">Recommendations</a></li>
               <li><a class="dropdown-item">Software Configurations</a></li>
-              <li><a class="dropdown-item">More</a></li>
-
             </ul>
           </div>
         </div>

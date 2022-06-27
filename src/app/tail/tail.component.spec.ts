@@ -50,4 +50,11 @@ describe('TailComponent', () => {
     tick(2000);
     discardPeriodicTasks();
   }));
+
+  fit('should click the button group', () => {
+    let buttonName = 'btn1';
+    component.setActive(buttonName);
+    expect(component.activeButton).toBeDefined();
+  })
+  
 });

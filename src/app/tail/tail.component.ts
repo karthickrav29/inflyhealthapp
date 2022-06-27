@@ -20,6 +20,7 @@ export class TailComponent implements OnInit {
   dummyItems: any = [];
   index = 1;
   timer: any;
+  activeButton: any = 'btn1';
 
   driversList = [
     {
@@ -159,16 +160,16 @@ export class TailComponent implements OnInit {
     this.tailId = localStorage.getItem("tailId");
   }
 
-  onButtonGroupClick($event: any) {
-    let clickedElement = $event.target || $event.srcElement;
-    if (clickedElement.nodeName === "BUTTON") {
-      let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
-      if (isCertainButtonAlreadyActive) {
-        isCertainButtonAlreadyActive.classList.remove("active");
-      }
-      clickedElement.className += " active";
-    }
-  }
+  // onButtonGroupClick($event: any) {
+  //   let clickedElement = $event.target || $event.srcElement;
+  //   if (clickedElement.nodeName === "BUTTON") {
+  //     let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
+  //     if (isCertainButtonAlreadyActive) {
+  //       isCertainButtonAlreadyActive.classList.remove("active");
+  //     }
+  //     clickedElement.className += " active";
+  //   }
+  // }
 
   overview() {
     this.tails = 'overview';
@@ -194,4 +195,10 @@ export class TailComponent implements OnInit {
     this.router.navigate(['/user']);
   }
 
+  setActive = (buttonName: any) => {
+    this.activeButton = buttonName;
+  }
+  isActive = (buttonName: any) => {
+    return this.activeButton === buttonName;
+  }
 }

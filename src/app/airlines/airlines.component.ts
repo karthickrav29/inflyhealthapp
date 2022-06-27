@@ -21,6 +21,7 @@ export class AirlinesComponent implements OnInit {
   flightname: any;
   overviews: any = "dashboard";
   clickedElement: any;
+  activeButton: any = 'btn1';
 
   constructor(private date: DatePipe,
     private router: Router,
@@ -57,17 +58,17 @@ export class AirlinesComponent implements OnInit {
     localStorage.setItem("isUserLoggedIn", "false");
   }
 
-  onButtonGroupClick($event: any) {
-    this.clickedElement = $event.target;
-    console.log("click", $event);
-    if (this.clickedElement.nodeName === "BUTTON") {
-      let isCertainButtonAlreadyActive = this.clickedElement.parentElement.querySelector(".active");
-      if (isCertainButtonAlreadyActive) {
-        isCertainButtonAlreadyActive.classList.remove("active");
-      }
-      this.clickedElement.className += " active";
-    }
-  }
+  // onButtonGroupClick($event: any) {
+  //   this.clickedElement = $event.target;
+  //   console.log("click", $event);
+  //   if (this.clickedElement.nodeName === "BUTTON") {
+  //     let isCertainButtonAlreadyActive = this.clickedElement.parentElement.querySelector(".active");
+  //     if (isCertainButtonAlreadyActive) {
+  //       isCertainButtonAlreadyActive.classList.remove("active");
+  //     }
+  //     this.clickedElement.className += " active";
+  //   }
+  // }
 
   overview() {
     this.overviews = "overview";
@@ -96,5 +97,12 @@ export class AirlinesComponent implements OnInit {
 
   home() {
     this.router.navigate(['/user']);
+  }
+
+  setActive = (buttonName: any) => {
+    this.activeButton = buttonName;
+  }
+  isActive = (buttonName: any) => {
+    return this.activeButton === buttonName;
   }
 }

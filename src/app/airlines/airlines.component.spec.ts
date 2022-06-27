@@ -12,7 +12,7 @@ describe('AirlinesComponent', () => {
   let component: AirlinesComponent;
   let fixture: ComponentFixture<AirlinesComponent>;
   let service: ExampleService;
-
+  let menuToggleSpy :any;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AirlinesComponent],
@@ -32,6 +32,7 @@ describe('AirlinesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     service = TestBed.inject(ExampleService);
+    menuToggleSpy = jasmine.createSpy('event');
   });
 
   fit('should create', () => {
@@ -166,27 +167,8 @@ describe('AirlinesComponent', () => {
   })
 
   fit('should click the button group', () => {
-    let event = [{
-
-      "isTrusted": true,
-      "delegateTarget": {
-        "location": {
-          "ancestorOrigins": {},
-          "href": "http://localhost:4200/airlines",
-          "origin": "http://localhost:4200",
-          "protocol": "http:",
-          "host": "localhost:4200",
-          "hostname": "localhost",
-          "port": "4200",
-          "pathname": "/airlines",
-          "search": "",
-          "hash": ""
-        },
-        "uidEvent": 1
-      }
-
-    }];
-
-    // component.onButtonGroupClick(event);
+    let buttonName = 'btn1';
+    component.setActive(buttonName);
+    expect(component.activeButton).toBeDefined();
   })
 });

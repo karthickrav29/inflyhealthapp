@@ -26,7 +26,19 @@
     <div class="col-sm-12 text-center bg-dark py-3 text-light">
       <h1 class="text-light">
         <img class="circle" src="{{titlelogo}}" style="height: 40px; width:40px;">
-        &#160;{{titlename}}&#160; <i class="fa-solid fa-angle-down" style="color: white;"></i>
+        <span class="dropdown">
+          <span type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" (click)="dropdown()">&#160;{{titlename}}&#160;</span>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div *ngFor="let name of dropname">
+              <div *ngIf="name.name != titlename">
+                <a class="dropdown-item" (click)="nameSelect(name.name)" style="cursor: pointer;">{{name.name}}</a>
+              </div>
+            </div>
+
+          </div>
+        </span>
+        <i class="fa-solid fa-angle-down" style="color: white;"></i>
       </h1>
       <div class="container">
         <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">

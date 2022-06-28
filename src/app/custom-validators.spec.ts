@@ -9,15 +9,12 @@ let service: ExampleService;
 let fixture: ComponentFixture<CustomValidators>;
 
 describe('CustomValidators', () => {
-  let component: CustomValidators;
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CustomValidators);
-    component = fixture.componentInstance;
-  });
-  it('should create an instance', () => {
-    expect(new CustomValidators()).toBeTruthy();
-    // expect(component.control)
-    let pass = "123";
-    let conpass = "123";
-  });
+    let component: CustomValidators;
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CustomValidators);
+        component = fixture.componentInstance;
+    });
+    it('should create an instance', () => {
+
+    });
 });

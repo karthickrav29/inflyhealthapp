@@ -20,8 +20,9 @@ export class AirlinesComponent implements OnInit {
   titlelogo: any;
   flightname: any;
   overviews: any = "dashboard";
-  clickedElement: any;
   activeButton: any = 'btn1';
+  dropname: any;
+  selectname: any;
 
   constructor(private date: DatePipe,
     private router: Router,
@@ -58,18 +59,6 @@ export class AirlinesComponent implements OnInit {
     localStorage.setItem("isUserLoggedIn", "false");
   }
 
-  // onButtonGroupClick($event: any) {
-  //   this.clickedElement = $event.target;
-  //   console.log("click", $event);
-  //   if (this.clickedElement.nodeName === "BUTTON") {
-  //     let isCertainButtonAlreadyActive = this.clickedElement.parentElement.querySelector(".active");
-  //     if (isCertainButtonAlreadyActive) {
-  //       isCertainButtonAlreadyActive.classList.remove("active");
-  //     }
-  //     this.clickedElement.className += " active";
-  //   }
-  // }
-
   overview() {
     this.overviews = "overview";
   }
@@ -104,5 +93,23 @@ export class AirlinesComponent implements OnInit {
   }
   isActive = (buttonName: any) => {
     return this.activeButton === buttonName;
+  }
+
+  dropdown() {
+    this.dropname = this.getData;
+  }
+
+  nameSelect(name: any) {
+    this.apiservice.getData().subscribe(data => {
+      this.selectname = data;
+      for (let airname of this.selectname) {
+        if (name == airname.name) {
+          this.titlename = airname.name;
+          localStorage.setItem("airname", this.titlename);
+          this.titlelogo = airname.image;
+          localStorage.setItem("airimage", this.titlelogo);
+        }
+      }
+    });
   }
 }

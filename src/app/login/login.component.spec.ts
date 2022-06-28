@@ -66,8 +66,8 @@ describe('LoginComponent', () => {
     let value = 1;
     spyOn(service, 'login').and.returnValues(of(data));
     component.login();
-    localStorage.setItem("username", "karthick");
     localStorage.setItem("isUserLoggedIn", "true");
+    localStorage.setItem("username", "karthick");
     expect(component.newData).toBeDefined();
     expect(component.newData.length).toEqual(value);
 

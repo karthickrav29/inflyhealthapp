@@ -39,10 +39,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-
-
   register() {
-    // this.registerForm.value.image =  this.selectfiles;
     this.apiservice.register(this.registerForm.value).subscribe(data => {
       this.selectfiles = data;
     });

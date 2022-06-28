@@ -50,6 +50,7 @@ describe('AppComponent', () => {
     component.hideChildModal();
     component.stay();
     component.logout();
+    localStorage.setItem("isUserLoggedIn", 'false');
     expect(component).toBeTruthy();
   });
 

@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IgxCategoryChartComponent, IgxLegendComponent } from 'igniteui-angular-charts';
 import { NgToastService } from 'ng-angular-popup';
 import { ExampleService } from '../example.service';
+import { CountryRenewableElectricity, CountryRenewableElectricityItem } from '../country-renewable-electricity';
 
 @Component({
   selector: 'app-airlines',
@@ -23,6 +25,40 @@ export class AirlinesComponent implements OnInit {
   activeButton: any = 'btn1';
   dropname: any;
   selectname: any;
+  selectedLevel: any;
+  chartType: any;
+
+
+  //   data:any = [
+  //     {id: 0, name: 'pie'},
+  //     {id: 1, name: 'line'},
+  //     {id: 2, name: 'bar'},
+  //     {id: 3, name: 'doughnut'},
+  // ];
+  //   chartDatasets = [
+  //     { data: [180, 50, 100, 40, 120], label: 'My First dataset' },
+  //     {data: [28, 48, 40, 19, 86], label: 'My Second dataset'}
+  //   ];
+
+  //   chartLabels = ['Jan', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
+
+  //   chartColors = [
+  //     {
+  //       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+  //       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+  //       borderWidth: 2,
+  //     },
+  //     {
+  //       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+  //       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+  //       borderWidth: 2,
+  //     }
+  //   ];
+
+  //   chartOptions: any = {
+  //     responsive: true
+  //   };
+
 
   constructor(private date: DatePipe,
     private router: Router,
@@ -84,10 +120,6 @@ export class AirlinesComponent implements OnInit {
     this.router.navigate(['/tail']);
   }
 
-  home() {
-    this.router.navigate(['/user']);
-  }
-
   setActive = (buttonName: any) => {
     this.activeButton = buttonName;
   }
@@ -111,5 +143,17 @@ export class AirlinesComponent implements OnInit {
         }
       }
     });
+  }
+
+  chartClicked(event: any): void {
+    console.log(event);
+  }
+
+  chartHovered(event: any): void {
+    console.log(event);
+  }
+
+  mapSelect() {
+    this.chartType = this.selectedLevel.name;
   }
 }

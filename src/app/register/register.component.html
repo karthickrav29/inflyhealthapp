@@ -39,7 +39,8 @@
                         </div>
 
 
-                        <div class="mb-3">
+                        <div class="row gx-3 mb-3">
+                        <div class="col-md-6">
                             <label class="small mb-1" for="inputEmailAddress">Email address *</label>
                             <input class="form-control" id="inputEmailAddress" type="email"
                                 placeholder="Enter your email address" formControlName="email">
@@ -49,6 +50,13 @@
                             <div *ngIf="registerForm.controls['email'].errors">
                                 Email is required.
                             </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="inputMobile">Mobile *</label>
+                            <input class="form-control" id="inputMobile" type="text"
+                                placeholder="Enter your Mobile number" formControlName="mobile">
+                        </div>
                         </div>
 
 

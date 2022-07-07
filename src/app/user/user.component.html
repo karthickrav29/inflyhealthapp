@@ -1,30 +1,8 @@
-<!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
-  <div class="container-fluid ">
-    <a class="navbar-brand">
-      <i class="fa fa-cloud"></i>&#160;
-      <span style="font-size:14px; font-weight: 500; ">InFlyHealth</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 
-      <div class="form-outline text-light" tabindex="-1">
-        <input class="main" type="search" placeholder="&#160;&#160;&#160;Search Airlines & Tails" aria-label="Search"
-          [(ngModel)]="searchQuery" (ngModelOptions)="{standalone:true}" (search)="search(searchQuery)" />
-        &#160;&#160;&#160;{{currentDate}}&#160;&#160;&#160;&#160;{{currentTime}}
-        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-        <i class="fa-solid fa-arrow-right-from-bracket fa-2x logout" (click)="logout()"></i>
-      </div>
 
-    </div>
-  </div>
-</nav>
+<app-app-header (Searchquerydata)="resultsearchdata($event)"></app-app-header>
 <br>
 <br>
-
 
 <!-- User page Content -->
 <div class="container headers"><br>

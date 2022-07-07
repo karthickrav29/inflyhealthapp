@@ -34,7 +34,6 @@ describe('AuthGuard', () => {
     expect(result).toBeTruthy();
     let url = '/login';
     guard.checkLogin(url);
-    console.log("guarddddddd", localStorage.getItem("isUserLoggedIn"));
     expect(guard.val).toBeDefined();
     expect(guard.val).toEqual('false');
   });

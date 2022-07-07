@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { ExampleService } from '../example.service';
-import { delay } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -11,7 +10,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  
   getData: any;
   buttonToggle: boolean = false;
   refData: any;
@@ -24,7 +23,7 @@ export class UserComponent implements OnInit {
   getUser: any;
   searchQuery: any;
   user: any;
-
+  
   constructor(
     private router: Router,
     private ToastService: NgToastService,
@@ -75,11 +74,8 @@ export class UserComponent implements OnInit {
     localStorage.setItem("airimage", image);
   }
 
-
-  search(searchQuery: any) {
-    this.apiservice.searchQuery(searchQuery).subscribe(data => {
-      this.getData = data;
-    })
+  resultsearchdata(res:any){
+    this.getData = res;
   }
 
 }

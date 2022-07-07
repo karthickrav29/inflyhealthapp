@@ -26,7 +26,7 @@ export class AppComponent {
 
 
   ngOnInit() {
-    this.idle.setIdle(600);
+    this.idle.setIdle(600000);
     this.idle.setTimeout(10);
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
     this.idle.onIdleEnd.subscribe(() => {

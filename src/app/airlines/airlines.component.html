@@ -1,26 +1,5 @@
-<!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
-  <div class="container-fluid ">
-    <a class="navbar-brand">
-      <i class="fa-solid fa-house" (click)="home()" style="cursor: pointer;"></i>&#160;
-      <span style="font-size:14px; font-weight: 500; ">InFlyHealth</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-
-      <div class="form-outline text-light" tabindex="-1">
-        <input class="main" type="search" placeholder="&#160;&#160;&#160;Search Airlines & Tails" aria-label="Search" />
-        &#160;&#160;&#160;{{currentDate}}&#160;&#160;&#160;&#160;{{currentTime}}
-        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-        <i class="fa-solid fa-arrow-right-from-bracket fa-2x logout justify-content-end" (click)="logout()"></i>
-      </div>
-
-    </div>
-  </div>
-</nav><br><br>
+<app-app-header></app-app-header>
+<br><br>
 <div class="container-fluid h-50 d-flex flex-column">
   <div class="row h-45">
     <div class="col-sm-12 text-center bg-dark py-3 text-light">
@@ -28,7 +7,7 @@
         <img class="circle" src="{{titlelogo}}" style="height: 40px; width:40px;">
         <span class="dropdown">
           <span type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" (click)="dropdown()">&#160;{{titlename}}&#160;</span>
+            aria-expanded="false" (click)="dropdown()" style="font-size: 30px;">&#160;{{titlename}}&#160;</span>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div *ngFor="let name of dropname">
               <div *ngIf="name.name != titlename">
@@ -38,24 +17,29 @@
 
           </div>
         </span>
-        <i class="fa-solid fa-angle-down" style="color: white;"></i>
+        <i class="fa-solid fa-angle-down" style="color: white; font-size: 30px;"></i>
       </h1>
       <div class="container">
         <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
           <button type="button" [class.active]="isActive('btn1')" (click)="setActive('btn1')"
             class="btn btn-outline-info" (click)="overview()" style="width:110px; box-shadow: none;">Overview</button>
+
           <button type="button" [class.active]="isActive('btn2')" (click)="setActive('btn2')"
             class="btn btn-outline-info" style="box-shadow: none;" (click)="dashboard()">Dashboards</button>
+
           <button type="button" [class.active]="isActive('btn3')" (click)="setActive('btn3')"
             class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block" style="border-radius:0px"
             (click)="tail()" style="width:110px;box-shadow: none;">Tails</button>
+
           <button type="button" [class.active]="isActive('btn4')" (click)="setActive('btn4')"
             class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block" style="box-shadow: none;"
             (click)="recommendation()">Recommendations</button>
+
           <button type="button" [class.active]="isActive('btn5')" (click)="setActive('btn5')"
             class="btn btn-outline-info d-none  d-lg-block d-md-block  d-xl-block"
             style="border-radius:0 5px 5px 0; box-shadow: none;" (click)="software()">Software
             Configurations</button>
+
           <div class="btn-group" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle d-md-none"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +47,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
               <li> <a class="dropdown-item" (click)="tail()">Tails</a></li>
-              <li><a class=" dropdown-item">Recommendations</a></li>
+              <li><a class=" dropdown-item" (click)="recommendation()">Recommendations</a></li>
               <li><a class="dropdown-item">Software Configurations</a></li>
             </ul>
           </div>
@@ -82,14 +66,14 @@
       </div>
     </div>
 
-    <div class="text-dark" style="font-weight: bold;"><br><br><br>
+    <div class="text-dark" style="font-weight: bold;">
       KEY METRICS<br><br>
     </div>
     <div class="col-sm-3">
       <div class="card">
         <h4 class="card-header head">
           <div class="row">
-            <div class="col-6 text-start">
+            <div class="col-6 text-start" style="font-weight: 700;">
               BITE Coverage
             </div><br>
             <div class="col-6 text-end">
@@ -98,15 +82,12 @@
           </div>
         </h4>
         <div class="card-body">
-          <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+          <h5 class="card-title" style="margin: 0;font-size: small;">TOTAL PERCENTAGE</h5>
           <div class="card-text">
             <div class="row">
-              <div class="col-sm-5 cards py-3">
+              <div class="col-sm-5 cards ">
                 0.0
               </div>
-              <!-- <div class="col-sm-2">
-
-              </div> -->
               <div class="col-sm-5 id justify-content-end">
                 &nbsp;
               </div>
@@ -148,7 +129,7 @@
       <div class="card">
         <h4 class="card-header head">
           <div class="row">
-            <div class="col-9">
+            <div class="col-9" style="font-weight: 700;">
               CONNECTIVITY Coverage
             </div><br>
             <div class="col-3 conts">
@@ -157,15 +138,12 @@
           </div>
         </h4>
         <div class="card-body">
-          <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+          <h5 class="card-title" style="margin: 0; font-size: small;">TOTAL PERCENTAGE</h5>
           <div class="card-text">
             <div class="row">
-              <div class="col-sm-5 cards py-3">
+              <div class="col-sm-5 cards">
                 0.0
               </div>
-              <!-- <div class="col-sm-2">
-
-              </div> -->
               <div class="col-sm-5 id justify-content-end">
                 &nbsp;
               </div>
@@ -216,67 +194,7 @@
         <i class="fa-solid fa-calendar-days"></i> June 11-June 16 (UTC)
       </div>
     </div>
-    <div class="col-sm-3"><br>
-      <div class="card" style="background-color: #5dbfd4; color: azure;">
-        <div class="card-body">
-          <h5 class="card-title" style="font-weight: 800;">ALL STATUSES</h5>
-          <p class="card-text py-1" style="font-size: 25px; font-weight: 800;">21</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3"><br>
-      <div class="card" style="background-color:  #f1f2f3;">
-        <div class="card-body">
-          <h5 class="card-title" style="font-weight: 800; color: #5dbfd4;">GOOD STATUSES</h5>
-          <div class="card-text py-1">
-            <div class="row">
-              <div class="col-sm-6" style="font-size: 25px; font-weight: 800;">
-                0
-              </div>
-              <div class="col-sm-6 text-end">
-                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160; 0.0%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3"><br>
-      <div class="card" style="background-color: #f1f2f3;">
-        <div class="card-body">
-          <h5 class="card-title" style="font-weight: 800;color: #5dbfd4;">BAD STATUSES</h5>
-          <div class="card-text py-1">
-            <div class="row">
-              <div class="col-sm-6" style="font-size: 25px; font-weight: 800;">
-                0
-              </div>
-              <div class="col-sm-6 text-end">
-                <i class="fa-solid fa-circle fa-2xs" style="color: green;"></i>&#160;0.0%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3"><br>
-      <div class="card" style="background-color:  #f1f2f3;">
-        <div class="card-body">
-          <h5 class="card-title" style="font-weight: 800; color: #5dbfd4;">UNKNOWN STATUSES</h5>
-          <div class="card-text py-1">
-            <div class="row">
-              <div class="col-sm-5" style="font-size: 25px; font-weight: 800;">
-                21
-              </div>
-              <div class="col-sm-7 text-end">
-                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160;100.0%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+    <ng-container [ngTemplateOutlet]="MsgRef"></ng-container>
 
     <div class="container-fluid"><br><br><br>
       <div class="table-responsive">
@@ -426,9 +344,89 @@
         </table>
       </div>
     </div>
-
+  </div>
+  <div *ngIf="overviews === 'dashboard'" class="row px-5">
+    <!-- <ng-container [ngTemplateOutlet]="MsgRef"></ng-container> -->
 
   </div>
+  <br> <br> <br>
+  <div *ngIf="overviews === 'recommendation'" class="row px-5" style="height: 800px;">
 
-  <!-- Footer -->
+
+
+    <!-- <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedLevel" (change)="mapSelect()">
+      <option *ngFor="let item of data" [ngValue]="item">{{item.name}}</option>
+    </select>
+
+    <div style="display: block; height: 800px; width: 500px;">
+      <br><br><br>
+      <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors"
+        [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div> -->
+  </div>
   <app-app-foot></app-app-foot>
+
+
+  <ng-template #MsgRef>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color: #5dbfd4; color: azure;">
+        <div class="card-body">
+          <h6 class="card-title" style="font-weight: 600;">ALL STATUSES</h6>
+          <p class="card-text" style="font-size: 30px; font-weight: 900;">21</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color:  #f1f2f3;">
+        <div class="card-body">
+          <h6 class="card-title" style="font-weight: 600; color: #5dbfd4;">GOOD STATUSES</h6>
+          <div class="card-text py-1">
+            <div class="row align-items-center">
+              <div class="col-sm-6" style="font-size: 25px; font-weight: 900;">
+                0
+              </div>
+              <div class="col-sm-6 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160; 0.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color: #f1f2f3;">
+        <div class="card-body">
+          <h6 class="card-title" style="font-weight: 600;color: #5dbfd4;">BAD STATUSES</h6>
+          <div class="card-text py-1">
+            <div class="row align-items-center">
+              <div class="col-sm-6" style="font-size: 25px; font-weight: 900;">
+                0
+              </div>
+              <div class="col-sm-6 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: green;"></i>&#160;0.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"><br>
+      <div class="card" style="background-color:  #f1f2f3;">
+        <div class="card-body">
+          <h6 class="card-title" style="font-weight: 600; color: #5dbfd4;">UNKNOWN STATUSES</h6>
+          <div class="card-text py-1">
+            <div class="row align-items-center">
+              <div class="col-sm-5" style="font-size: 25px; font-weight: 900;">
+                21
+              </div>
+              <div class="col-sm-7 text-end">
+                <i class="fa-solid fa-circle fa-2xs" style="color: red;"></i>&#160;100.0%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>

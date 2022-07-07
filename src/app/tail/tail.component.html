@@ -1,5 +1,5 @@
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top ">
     <div class="container-fluid ">
         <a class="navbar-brand">
             <i class="fa-solid fa-house" (click)="home()" style="cursor: pointer;"></i>&#160;
@@ -21,14 +21,14 @@
 
         </div>
     </div>
-</nav>
-
+</nav> -->
+<app-app-header></app-app-header>
 <br><br>
 <div class="container-fluid h-50 d-flex flex-column">
     <div class="row h-45">
         <div class="col-sm-12 text-center bg-dark py-4 text-light">
             <h1 class="text-light">
-                <i class="fa-solid fa-plane-up fa-2xs bg-info circle py-3" style="height: 30px; width: 30px;"></i>
+                <i class="fa-solid fa-plane-up fa-2xs bg-info circle py-3" style="height: 40px; width: 40px; font-size: 30px;"></i>
                 {{tailId}} &#160; <i class="fa-solid fa-angle-down "></i>
             </h1>
             <div class="container">
@@ -84,16 +84,16 @@
                 <div class="card">
                     <h4 class="card-header head">
                         <div class="row">
-                            <div class="col-6 text-start">
+                            <div class="col-6 text-start" style="font-weight: 700;">
                                 BITE Coverage
                             </div><br>
                         </div>
                     </h4>
                     <div class="card-body">
-                        <h5 class="card-title" style="margin: 0;">TOTAL PERCENTAGE</h5>
+                        <h5 class="card-title" style="margin: 0;font-size: small;">TOTAL PERCENTAGE</h5>
                         <div class="card-text">
                             <div class="row">
-                                <div class="col-sm-5 cards py-3">
+                                <div class="col-sm-5 cards">
                                     0.0
                                 </div>
                                 <div class="col-sm-2">
@@ -390,7 +390,9 @@
             </div><br><br>
             <div class="container text-center">
                 No Records Found...
-            </div><br><br><br><br>
+            </div>
+            <!-- <ng-container [ngTemplateOutlet]="MsgRef"></ng-container> -->
+            <br><br>
         </div>
         <div *ngIf="tails === 'flights'">
             <div class="text-dark">

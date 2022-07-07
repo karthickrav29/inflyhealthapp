@@ -5,6 +5,8 @@ import { AuthGuard } from './auth.guard';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { OtpComponent } from './otp/otp.component';
+import { PhoneComponent } from './phone/phone.component';
 import { RegisterComponent } from './register/register.component';
 import { TailComponent } from './tail/tail.component';
 import { UserComponent } from './user/user.component';
@@ -39,6 +41,16 @@ export const routes: Routes = [
   {
     path: 'tail',
     component: TailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'phone',
+    component:PhoneComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'otp',
+    component: OtpComponent,
     canActivate: [AuthGuard]
   },
   {

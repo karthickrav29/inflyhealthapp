@@ -9,7 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
-
+// import { IgxCategoryChartModule } from 'igniteui-angular-charts';
+import { IgxLegendModule, IgxCategoryChartModule, IgxDataChartInteractivityModule } from 'igniteui-angular-charts';
 //Angular Material Dependencies
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -61,6 +62,18 @@ import { AgmOverlays } from "agm-overlays";
 import { AirlinesComponent } from './airlines/airlines.component';
 import { TailComponent } from './tail/tail.component';
 import { AppFootComponent } from './app-foot/app-foot.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { PhoneComponent } from './phone/phone.component';
+import { OtpComponent } from './otp/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { environment } from 'src/environments/environment';
+import firebase from 'firebase/compat/app';
+import { AppHeaderComponent } from './app-header/app-header.component';
+
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -73,7 +86,10 @@ import { AppFootComponent } from './app-foot/app-foot.component';
     ErrorComponent,
     AirlinesComponent,
     TailComponent,
-    AppFootComponent
+    AppFootComponent,
+    PhoneComponent,
+    OtpComponent,
+    AppHeaderComponent
   ],
   imports: [
     AppRoutingModule,
@@ -127,7 +143,14 @@ import { AppFootComponent } from './app-foot/app-foot.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAjpYNz_AmjMM1dIg5BA0y9mLJt71GMuPo'
     }),
-    AgmOverlays
+    AgmOverlays,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    NgOtpInputModule,
+    IgxLegendModule,
+    IgxCategoryChartModule,
+    IgxDataChartInteractivityModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

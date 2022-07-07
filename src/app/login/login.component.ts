@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("password", pass);
     this.apiservice.login(user, pass).subscribe((data: any): any => {
       this.newData = data;
+      localStorage.setItem("mobile", this.newData[0].mobile);
       if (this.newData.length == 1) {
         localStorage.setItem("isUserLoggedIn", "true");
-        this.router.navigate(['/user']);
+        this.router.navigate(['/phone']);
         this.ToastService.success({ detail: "Success Message", summary: "Login Successful", duration: 2000 });
 
       } else {

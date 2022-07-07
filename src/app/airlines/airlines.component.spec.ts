@@ -43,7 +43,7 @@ describe('AirlinesComponent', () => {
     component.recommendation();
     component.tail();
     component.software();
-    component.home();
+    // component.home();
     component.dropdown();
     component.tailopen(id);
     expect(component).toBeTruthy();

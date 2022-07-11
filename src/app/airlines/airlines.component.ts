@@ -29,35 +29,35 @@ export class AirlinesComponent implements OnInit {
   chartType: any;
 
 
-  //   data:any = [
-  //     {id: 0, name: 'pie'},
-  //     {id: 1, name: 'line'},
-  //     {id: 2, name: 'bar'},
-  //     {id: 3, name: 'doughnut'},
-  // ];
-  //   chartDatasets = [
-  //     { data: [180, 50, 100, 40, 120], label: 'My First dataset' },
-  //     {data: [28, 48, 40, 19, 86], label: 'My Second dataset'}
-  //   ];
+    data:any = [
+      {id: 0, name: 'pie'},
+      {id: 1, name: 'line'},
+      {id: 2, name: 'bar'},
+      {id: 3, name: 'doughnut'},
+  ];
+    chartDatasets = [
+      { data: [180, 50, 100, 40, 120], label: 'My First dataset' },
+      // {data: [28, 48, 40, 19, 86], label: 'My Second dataset'}
+    ];
 
-  //   chartLabels = ['Jan', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
+    chartLabels = ['Jan', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
 
-  //   chartColors = [
-  //     {
-  //       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-  //       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
-  //       borderWidth: 2,
-  //     },
-  //     {
-  //       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-  //       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
-  //       borderWidth: 2,
-  //     }
-  //   ];
+    chartColors = [
+      {
+        backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+        hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+        borderWidth: 2,
+      },
+      {
+        backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+        hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+        borderWidth: 2,
+      }
+    ];
 
-  //   chartOptions: any = {
-  //     responsive: true
-  //   };
+    chartOptions: any = {
+      responsive: true
+    };
 
 
   constructor(private date: DatePipe,

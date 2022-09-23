@@ -43,6 +43,8 @@ export class RegisterComponent implements OnInit {
   register() {
     this.apiservice.register(this.registerForm.value).subscribe(data => {
       this.selectfiles = data;
+      console.log("data",data);
+      // this.SignUp(data.email, data.password);
     });
     this.ToastService.success({ detail: "Success Message", summary: "Register Successful", duration: 2000 });
     setTimeout(() => {
@@ -53,4 +55,18 @@ export class RegisterComponent implements OnInit {
   redirect() {
     this.router.navigate(['/login']);
   }
+
+  // SignUp(email : any, password : any) {
+  //   return this.afAuth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       this.SendVerificationMail();
+  //     })
+  //     .catch((error) => {
+  //       window.alert(error.message);
+  //     });
+  // }
+
+
+
 }

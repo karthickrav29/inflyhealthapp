@@ -140,6 +140,8 @@ export class AirlinesComponent implements OnInit {
           localStorage.setItem("airname", this.titlename);
           this.titlelogo = airname.image;
           localStorage.setItem("airimage", this.titlelogo);
+          this.setActive('btn1');
+          this.isActive('btn1');
         }
       }
     });

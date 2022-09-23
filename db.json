@@ -58,6 +58,46 @@
       "password": "123456",
       "confirmpassword": "123456",
       "id": 6
+    },
+    {
+      "username": "master",
+      "firstname": "master",
+      "lastname": "JD",
+      "email": "newemail@gmail.com",
+      "mobile": "+919606629871",
+      "password": "12345",
+      "confirmpassword": "12345",
+      "id": 7
+    },
+    {
+      "username": "subhabgi",
+      "firstname": "shubhangi",
+      "lastname": "c",
+      "email": "mail@gmail.com",
+      "mobile": "+919145153399",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 8
+    },
+    {
+      "username": "krishnakumar",
+      "firstname": "Krishna",
+      "lastname": "Kumar",
+      "email": "krishnakumar@gmail.com",
+      "mobile": "+919360031703",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 9
+    },
+    {
+      "username": "master",
+      "firstname": "karthick",
+      "lastname": "ravikumar",
+      "email": "frontenddeveloperangular@gmail.com",
+      "mobile": "+919606629871",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 10
     }
   ],
   "posts": [

@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { Router } from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-phone',
@@ -10,15 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./phone.component.css']
 })
 export class PhoneComponent implements OnInit {
-
+  email = "frontenddeveloperangular@gmail.com";
+  password ="123456";
   phoneNumber: any;
   reCaptchaVerifier!: any;
 
-  constructor(private router: Router, private ngZone: NgZone) { }
+  constructor(private router: Router, private ngZone: NgZone, private afAuth : AngularFireAuth) { }
 
   ngOnInit(): void {
     this.phoneNumber = localStorage.getItem("mobile");
     this.getOTP(this.phoneNumber);
+    // this.signUp(this.email, this.password);
   }
 
   getOTP(phoneNumber:any) {
@@ -44,5 +47,27 @@ export class PhoneComponent implements OnInit {
       })
       
   }
+
+
+  // signUp(email: string, password: string) {
+  //   return this.afAuth
+  //   .createUserWithEmailAndPassword(email, password)
+  //   .then((result) => {
+  //     this.SendVerificationMail(); // Sending email verification notification, when new user registers
+  //   })
+  //   .catch((error) => {
+  //     window.alert(error.message);
+  //   });
+    
+  // }
+
+    
+  // SendVerificationMail() {
+  //   return this.afAuth.currentUser
+  //     .then((user) => {
+  //       return user.sendEmailVerification();
+  //     })
+      
+  // }
 
 }

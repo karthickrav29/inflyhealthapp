@@ -4,7 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { ExampleService } from '../example.service';
-
+import { User } from '../user';
+import { Login } from '../login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,15 +13,20 @@ import { ExampleService } from '../example.service';
 })
 export class LoginComponent implements OnInit {
 
-  username: string | undefined;
-  password: string | undefined;
+  // username: string | undefined;
+  // password: string | undefined;
   newData: any;
-
+  user : User[] | undefined;
+  logins : Login = new Login();
+  
 
   constructor(private apiservice: ExampleService, private router: Router,
     private ToastService: NgToastService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.getUsers();
+  }
+
 
   loginForm = new FormGroup({
     username: new FormControl("", [Validators.required,
@@ -28,15 +34,23 @@ export class LoginComponent implements OnInit {
     password: new FormControl("", [Validators.required, Validators.minLength(5)])
   });
 
+  private getUsers(){
+    this.apiservice.getUserList().subscribe(data => {
+      this.user = data;
+    })
+  }
+
+
+
   login(): any {
-    let user = this.loginForm.value.username;
-    let pass = this.loginForm.value.password;
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
-    this.apiservice.login(user, pass).subscribe((data: any): any => {
+    this.logins.username = this.loginForm.value.username;
+    this.logins.password = this.loginForm.value.password;
+    localStorage.setItem("username", this.loginForm.value.username);
+    localStorage.setItem("password", this.loginForm.value.password);
+    this.apiservice.login(this.logins).subscribe((data: any): any => {
       this.newData = data;
-      localStorage.setItem("mobile", this.newData[0].mobile);
-      if (this.newData.length == 1) {
+      if (this.newData != null) {
+        localStorage.setItem("mobile", this.newData.mobile);
         localStorage.setItem("isUserLoggedIn", "true");
         this.router.navigate(['/phone']);
         this.ToastService.success({ detail: "Success Message", summary: "Login Successful", duration: 2000 });

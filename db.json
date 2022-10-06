@@ -5,7 +5,6 @@
       "email": "karthick@ltts.com",
       "mobile": "+919606629871",
       "password": "123456",
-      "image": "../../../../assets/new.jpg",
       "confirmpassword": "123456",
       "id": 1
     },
@@ -522,7 +521,7 @@
     {
       "id": 6,
       "name": "Air France",
-      "image": "http://logok.org/wp-content/uploads/2014/04/Air-France-AF-logo.png",
+      "image": "https://logotaglines.com/wp-content/uploads/2022/06/Air-France-Logo-Tagline-Slogan-Owner-480x480.jpg",
       "code": "AFR",
       "flightdata": [
         {
@@ -827,7 +826,7 @@
     {
       "id": 11,
       "name": "EVA Air",
-      "image": "https://logodownload.org/wp-content/uploads/2020/03/eva-air-logo-0.png",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc7Tim6_ZIBCIzNYr_BulahXcNueLzZQgrRVIZVDCQEg&s",
       "code": "EVA",
       "flightdata": [
         {

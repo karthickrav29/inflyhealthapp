@@ -148,11 +148,9 @@ export class AirlinesComponent implements OnInit {
   }
 
   chartClicked(event: any): void {
-    console.log(event);
   }
 
   chartHovered(event: any): void {
-    console.log(event);
   }
 
   mapSelect() {

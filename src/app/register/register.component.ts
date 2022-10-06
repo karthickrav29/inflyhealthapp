@@ -4,6 +4,7 @@ import { ExampleService } from '../example.service';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { CustomValidators } from '../custom-validators';
+import { User } from '../user';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { CustomValidators } from '../custom-validators';
 })
 export class RegisterComponent implements OnInit {
   selectfiles: any;
+  user : User = new User();
 
   constructor(private apiservice: ExampleService, private router: Router,
     private ToastService: NgToastService) { }
@@ -43,8 +45,6 @@ export class RegisterComponent implements OnInit {
   register() {
     this.apiservice.register(this.registerForm.value).subscribe(data => {
       this.selectfiles = data;
-      console.log("data",data);
-      // this.SignUp(data.email, data.password);
     });
     this.ToastService.success({ detail: "Success Message", summary: "Register Successful", duration: 2000 });
     setTimeout(() => {

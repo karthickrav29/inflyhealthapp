@@ -21,7 +21,7 @@ export class PhoneComponent implements OnInit {
   ngOnInit(): void {
     this.phoneNumber = localStorage.getItem("mobile");
     this.getOTP(this.phoneNumber);
-    // this.signUp(this.email, this.password);
+   
   }
 
   getOTP(phoneNumber:any) {

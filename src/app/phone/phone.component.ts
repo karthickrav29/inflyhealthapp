@@ -21,7 +21,7 @@ export class PhoneComponent implements OnInit {
   ngOnInit(): void {
     this.phoneNumber = localStorage.getItem("mobile");
     this.getOTP(this.phoneNumber);
-   
+   console.log(this.phoneNumber);
   }
 
   getOTP(phoneNumber:any) {
@@ -48,26 +48,5 @@ export class PhoneComponent implements OnInit {
       
   }
 
-
-  // signUp(email: string, password: string) {
-  //   return this.afAuth
-  //   .createUserWithEmailAndPassword(email, password)
-  //   .then((result) => {
-  //     this.SendVerificationMail(); // Sending email verification notification, when new user registers
-  //   })
-  //   .catch((error) => {
-  //     window.alert(error.message);
-  //   });
-    
-  // }
-
-    
-  // SendVerificationMail() {
-  //   return this.afAuth.currentUser
-  //     .then((user) => {
-  //       return user.sendEmailVerification();
-  //     })
-      
-  // }
 
 }

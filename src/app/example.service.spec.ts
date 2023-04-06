@@ -25,6 +25,7 @@ describe('ExampleService', () => {
     let username = "karthick";
     let password = "123456";
     let query = "air";
+    let user_id = 1;
     let data = [{
       "username": "karthick",
       "email": "karthick@ltts.com",
@@ -36,7 +37,7 @@ describe('ExampleService', () => {
 
     const service: ExampleService = TestBed.get(ExampleService);
     service.getData();
-    service.getallData();
+    service.getallData(user_id );
     service.login(username, password);
     service.register(data);
     service.searchQuery(query);

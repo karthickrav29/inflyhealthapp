@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
   getUser: any;
   searchQuery: any;
   user: any;
+  userData :any;
   
   constructor(
     private router: Router,
@@ -38,16 +39,10 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getusername = localStorage.getItem("username");
-    this.apiservice.getallData().subscribe(data => {
-      this.newData = data;
-      for (this.user of this.newData) {
-        if (this.user.username == this.getusername) {
-          this.getUser = this.user.username;
-        }
-      }
-    })
-
+     
+    this.userData = localStorage.getItem("userData");
+    var parseData = JSON.parse(this.userData);
+    this.getusername = parseData[0].username;
   }
 
   logout() {

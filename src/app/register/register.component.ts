@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    console.log(this.registerForm.value);
     this.apiservice.register(this.registerForm.value).subscribe(data => {
       this.selectfiles = data;
     });

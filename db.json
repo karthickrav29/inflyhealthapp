@@ -97,6 +97,16 @@
       "password": "123456",
       "confirmpassword": "123456",
       "id": 10
+    },
+    {
+      "username": "newuser",
+      "firstname": "",
+      "lastname": "",
+      "email": "newuser@gmail",
+      "mobile": "+91111111111",
+      "password": "111111",
+      "confirmpassword": "111111",
+      "id": 11
     }
   ],
   "posts": [

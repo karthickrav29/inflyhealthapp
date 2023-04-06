@@ -1,5 +1,5 @@
 import { NgForOf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   });
 
   private getUsers(){
-    this.apiservice.getUserList().subscribe(data => {
+    this.apiservice.getallData().subscribe(data => {
       this.user = data;
     })
   }
@@ -45,13 +45,16 @@ export class LoginComponent implements OnInit {
   login(): any {
     this.logins.username = this.loginForm.value.username;
     this.logins.password = this.loginForm.value.password;
-    localStorage.setItem("username", this.loginForm.value.username);
-    localStorage.setItem("password", this.loginForm.value.password);
-    this.apiservice.login(this.logins).subscribe((data: any): any => {
+    
+    // localStorage.setItem("password", this.loginForm.value.password);
+    this.apiservice.login(this.logins.username, this.logins.password).subscribe((data: any): any => {
       this.newData = data;
       if (this.newData != null) {
-        localStorage.setItem("mobile", this.newData.mobile);
+        console.log("store",this.newData)
+        localStorage.setItem("username", this.newData.username);
+        localStorage.setItem("mobile", this.newData[0].mobile);
         localStorage.setItem("isUserLoggedIn", "true");
+        localStorage.setItem("userData", JSON.stringify(this.newData));
         this.router.navigate(['/phone']);
         this.ToastService.success({ detail: "Success Message", summary: "Login Successful", duration: 2000 });
 

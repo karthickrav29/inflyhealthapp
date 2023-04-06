@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
@@ -152,7 +152,11 @@ firebase.initializeApp(environment.firebase);
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe
+    // , {
+    // provide:LocationStrategy, useClass:HashLocationStrategy
+  // }
+],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
